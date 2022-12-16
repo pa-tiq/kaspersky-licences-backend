@@ -6,7 +6,7 @@ exports.getLicences = (req, res, next) => {
   const config = {
     user: keys.mssql_username,
     password: keys.mssql_password184,
-    server: keys.mssql_server184,
+    server: 'localhost',
     database: keys.mssql_database,
   };
 
