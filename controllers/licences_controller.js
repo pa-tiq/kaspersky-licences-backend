@@ -16,7 +16,7 @@ exports.getLicences = (req, res, next) => {
   };
 
   const pool = new sql.ConnectionPool(config);
-  pool.connect().then(()=>{
+  pool.connect().then(() => {
     pool.request().query(
       `
       SELECT
@@ -26,23 +26,27 @@ exports.getLicences = (req, res, next) => {
       INNER JOIN dbo.v_hosts H ON AHK.nIdHost=H.nId
       INNER JOIN dbo.v_adm_group G ON H.nGroup = G.nId
       group by G.wstrName
-      `,(err,result) => {console.dir(result)})
-  })
+      `,
+      (err, result) => {
+        res.send(result);
+      }
+    );
+  });
 
   // connect to your database
   //sql.connect(config, function (err) {
   //  if (err) console.log(err);
-//
+  //
   //  // create Request object
   //  const request = new sql.Request();
-//
+  //
   //  // query to the database and get the records
   //  request.query(
   //    `
   //    SELECT
   //    G.wstrName as 'OM',
-  //    count(G.wstrName)  as 'qtd licencas' 
-  //    FROM dbo.apphostskeys AHK 
+  //    count(G.wstrName)  as 'qtd licencas'
+  //    FROM dbo.apphostskeys AHK
   //    INNER JOIN dbo.v_hosts H ON AHK.nIdHost=H.nId
   //    INNER JOIN dbo.v_adm_group G ON H.nGroup = G.nId
   //    group by G.wstrName
