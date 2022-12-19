@@ -13,6 +13,6 @@ app.use((req, res, next) => {
   next(); //the request can now continue
 });
 
-app.use("/", licences_router); // GET /
+app.use("/licences", licences_router); // GET /
 
 app.listen(8080);
