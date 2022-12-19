@@ -6,7 +6,7 @@ exports.getLicences = (req, res, next) => {
   const config = {
     user: keys.mssql_username,
     password: keys.mssql_password184,
-    server: 'localhost',
+    server: "localhost\\MSSQL$SQLEXPRESS",
     port: 50122,
     database: keys.mssql_database,
     options:{
