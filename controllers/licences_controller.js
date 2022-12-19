@@ -9,9 +9,10 @@ exports.getLicences = (req, res, next) => {
     server: 'localhost',
     port: 50122,
     database: keys.mssql_database,
+    options:{
+      trustedConnection: true,
+    }
   };
-
-  let records;
 
   // connect to your database
   sql.connect(config, function (err) {
