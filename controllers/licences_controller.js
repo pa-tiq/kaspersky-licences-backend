@@ -7,7 +7,7 @@ exports.getLicences = (req, res, next) => {
     user: keys.mssql_username,
     password: keys.mssql_password184,
     server: 'localhost',
-    port: 3306,
+    port: 50122,
     database: keys.mssql_database,
   };
 
