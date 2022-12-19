@@ -10,6 +10,8 @@ exports.getLicences = (req, res, next) => {
     database: keys.mssql_database,
   };
 
+  let records;
+
   // connect to your database
   sql.connect(config, function (err) {
     if (err) console.log(err);
@@ -23,9 +25,9 @@ exports.getLicences = (req, res, next) => {
       SELECT
       G.wstrName as 'OM',
       count(G.wstrName)  as 'qtd licencas' 
-      FROM KAV.dbo.apphostskeys AHK 
-      INNER JOIN KAV.dbo.v_hosts H ON AHK.nIdHost=H.nId
-      INNER JOIN KAV.dbo.v_adm_group G ON H.nGroup = G.nId
+      FROM dbo.apphostskeys AHK 
+      INNER JOIN dbo.v_hosts H ON AHK.nIdHost=H.nId
+      INNER JOIN dbo.v_adm_group G ON H.nGroup = G.nId
       group by G.wstrName
       `,
       function (err, recordset) {
