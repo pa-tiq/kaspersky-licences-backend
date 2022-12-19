@@ -26,7 +26,7 @@ exports.getLicences = (req, res, next) => {
       INNER JOIN dbo.v_hosts H ON AHK.nIdHost=H.nId
       INNER JOIN dbo.v_adm_group G ON H.nGroup = G.nId
       group by G.wstrName
-      `,(err,result => {console.dir(result)}))
+      `,(err,result) => {console.dir(result)})
   })
 
   // connect to your database
