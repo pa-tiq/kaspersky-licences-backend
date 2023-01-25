@@ -8,7 +8,7 @@ exports.getLicences = (req, res, next) => {
     password: keys.mssql_password184,
     server: 'localhost',
     driver: 'msnodesqlv8',
-    port: 50122,
+    port: keys.mssql_port,
     database: keys.mssql_database,
     options: {
       trustedConnection: true,
