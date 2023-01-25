@@ -21,7 +21,7 @@ exports.getLicences = (req, res, next) => {
       `
       SELECT
       G.wstrName as 'OM',
-      count(G.wstrName)  as 'qtd licencas' 
+      count(G.wstrName)  as 'qtd_licencas' 
       FROM dbo.apphostskeys AHK 
       INNER JOIN dbo.v_hosts H ON AHK.nIdHost=H.nId
       INNER JOIN dbo.v_adm_group G ON H.nGroup = G.nId
