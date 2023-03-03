@@ -15,7 +15,7 @@ exports.getLicences183 = (req, res, next) => {
   // config for your database
   let result_object;
   const config = {
-    user: keys.mssql_username,
+    user: keys.mssql_username183,
     password: keys.mssql_password183,
     server: keys.mssql_server183,
     driver: 'msnodesqlv8',
@@ -44,7 +44,7 @@ exports.getLicences184 = (req, res, next) => {
   // config for your database
   let result_object;
   const config = {
-    user: keys.mssql_username,
+    user: keys.mssql_username184,
     password: keys.mssql_password184,
     server: keys.mssql_server184,
     driver: 'msnodesqlv8',
