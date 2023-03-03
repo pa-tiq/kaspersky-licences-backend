@@ -19,7 +19,7 @@ exports.getLicences183 = (req, res, next) => {
     password: keys.mssql_password183,
     server: keys.mssql_server183,
     driver: 'msnodesqlv8',
-    port: keys.mssql_port,
+    port: keys.mssql_port183,
     database: keys.mssql_database,
     options: {
       trustedConnection: true,
@@ -48,7 +48,7 @@ exports.getLicences184 = (req, res, next) => {
     password: keys.mssql_password184,
     server: keys.mssql_server184,
     driver: 'msnodesqlv8',
-    port: keys.mssql_port,
+    port: keys.mssql_port184,
     database: keys.mssql_database,
     options: {
       trustedConnection: true,
