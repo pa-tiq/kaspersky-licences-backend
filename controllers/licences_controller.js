@@ -23,7 +23,7 @@ const configCommon = {
   },
 };
 
-exports.getLicences183 = (req, res, next) => {
+exports.get183Licences = (req, res, next) => {
   let result_object_183 = {};
   const config = {
     password: keys.mssql_password183,
@@ -52,7 +52,7 @@ exports.getLicences183 = (req, res, next) => {
   sendQuery();
 };
 
-exports.getLicences184 = (req, res, next) => {
+exports.get184Licences = (req, res, next) => {
   let result_object_184 = {};
   const config = {
     password: keys.mssql_password184,
