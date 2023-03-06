@@ -69,6 +69,7 @@ exports.getLicences184 = (req, res, next) => {
       await sql.connect(config);
       const result = await sql.query`${licencesQuery}`;
       console.dir(result);
+      res.send(result);
      } catch (err) {
       console.log(err)
      }
