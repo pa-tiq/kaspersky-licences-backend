@@ -1,8 +1,8 @@
 const sql = require('mssql');
 const keys = require('../keys.json');
 
-const licencesQuery = `
-  SELECT
+const licencesQuery = 
+` SELECT
   G.wstrName as 'OM',
   count(G.wstrName)  as 'qtd_licencas' 
   FROM dbo.apphostskeys AHK 
@@ -59,21 +59,31 @@ exports.getLicences184 = (req, res, next) => {
     },
   };
 
-  try {
-    const pool = new sql.ConnectionPool(config);
-    pool.connect().then(() => {
-      pool.request().query(licencesQuery, (err, result) => {
-        result_object = result;
-        res.send(result);
-      });
-    }).catch((err)=>{
-      console.log(err);
-      throw new Error(err);
-    });
-  } catch (error) {
-    console.log(error);
-    res.send(result_object);
+  async () => {
+    try {
+      // make sure that any items are correctly URL encoded in the connection string
+      await sql.connect(config);
+      const result = await sql.query`${licencesQuery}`;
+      console.dir(result);
+     } catch (err) {
+      console.log(err)
+     }
   }
+  //try {
+  //  const pool = new sql.ConnectionPool(config);
+  //  pool.connect().then(() => {
+  //    pool.request().query(licencesQuery, (err, result) => {
+  //      result_object = result;
+  //      res.send(result);
+  //    });
+  //  }).catch((err)=>{
+  //    console.log(err);
+  //    throw new Error(err);
+  //  });
+  //} catch (error) {
+  //  console.log(error);
+  //  res.send(result_object);
+  //}
 };
 
 //exports.getLicences184 = (req, res, next) => {
