@@ -55,6 +55,7 @@ exports.getLicences184 = (req, res, next) => {
     database: keys.mssql_database,
     options: {
       trustedConnection: true,
+      trustServerCertificate: true
     },
   };
 
