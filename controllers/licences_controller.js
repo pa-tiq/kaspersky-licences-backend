@@ -1,5 +1,6 @@
 const sql = require('mssql');
 const keys = require('../keys.json');
+const fs = require('fs');
 
 const licencesQuery = ` SELECT
   G.wstrName as 'OM',
@@ -39,13 +40,19 @@ exports.get183Licences = (req, res, next) => {
         if (err) {
           throw new Error(err.message);
         } else {
-          result_object_183 = result.recordset;
+          let data = JSON.stringify(result.recordset);
+          fs.writeFileSync('183.json',data);
           res.send(result.recordset);
         }
       });
     } catch (err) {
+      let rawdata = fs.readFileSync('183.json');
+      let data = {};
+      if(rawdata) {
+        data = JSON.parse(rawdata);
+      }      
       console.log(err);
-      res.send({ result_object_183, err });
+      res.send({ data, err });
     }
   };
 
@@ -68,13 +75,19 @@ exports.get184Licences = (req, res, next) => {
         if (err) {
           throw new Error(err.message);
         } else {
-          result_object_184 = result.recordset;
+          let data = JSON.stringify(result.recordset);
+          fs.writeFileSync('184.json',data);
           res.send(result.recordset);
         }
       });
     } catch (err) {
+      let rawdata = fs.readFileSync('184.json');
+      let data = {};
+      if(rawdata) {
+        data = JSON.parse(rawdata);
+      }
       console.log(err);
-      res.send({ result_object_184, err });
+      res.send({ data, err });
     }
   };
 
