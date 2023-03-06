@@ -9,94 +9,74 @@ const licencesQuery =
   INNER JOIN dbo.v_hosts H ON AHK.nIdHost=H.nId
   INNER JOIN dbo.v_adm_group G ON H.nGroup = G.nId
   group by G.wstrName
-  `;
+  `
+const configCommon = {
+  database: keys.mssql_database,
+  user: keys.mssql_username,
+  pool: {
+    max: 10,
+    min: 0,
+    idleTimeoutMillis: 30000
+  },
+  options: {
+    trustedConnection: true,
+    trustServerCertificate: true
+  },
+}
 
 exports.getLicences183 = (req, res, next) => {
-  // config for your database
   let result_object = {};
   const config = {
-    user: keys.mssql_username183,
     password: keys.mssql_password183,
     server: keys.mssql_server183,
-    //driver: 'msnodesqlv8',
     port: keys.mssql_port183,
-    database: keys.mssql_database,
-    options: {
-      trustedConnection: true,
-    },
+    ...configCommon
   };
 
-  try {
-    const pool = new sql.ConnectionPool(config);
-    pool.connect().then(() => {
-      pool.request().query(licencesQuery, (err, result) => {
+  const sendQuery = async () => {
+    try {
+      await sql.connect(config);
+      new sql.Request().query(licencesQuery,(err,result) => {
+        if(err){
+          throw new Error(err.message);
+        }
         result_object = result;
         res.send(result);
-      });
-    }).catch((err)=>{
+      })
+     } catch (err) {
       console.log(err);
-      throw new Error(err);
-    });
-  } catch (error) {
-    console.log(error);
-    res.send(result_object);
+      res.send(result_object);
+     }
   }
+
+  sendQuery();
 };
 
 exports.getLicences184 = (req, res, next) => {
-  // config for your database
+
   let result_object = {};
   const config = {
-    user: keys.mssql_username184,
     password: keys.mssql_password184,
     server: keys.mssql_server184,
-    //driver: '{ODBC Driver 17 for SQL Server}',
     port: keys.mssql_port184,
-    database: keys.mssql_database,
-    pool: {
-      max: 10,
-      min: 0,
-      idleTimeoutMillis: 30000
-    },
-    options: {
-      trustedConnection: true,
-      trustServerCertificate: true
-    },
+    ...configCommon
   };
 
-  async () => {
+  const sendQuery = async () => {
     try {
       await sql.connect(config);
-      const result = await sql.query`${licencesQuery}`;
-      console.dir(result);
-      res.send(result);
+      new sql.Request().query(licencesQuery,(err,result) => {
+        if(err){
+          throw new Error(err.message);
+        }
+        result_object = result;
+        res.send(result);
+      })
      } catch (err) {
-      console.log(err)
+      console.log(err);
+      res.send(result_object);
      }
   }
-  //try {
-  //  const pool = new sql.ConnectionPool(config);
-  //  pool.connect().then(() => {
-  //    pool.request().query(licencesQuery, (err, result) => {
-  //      result_object = result;
-  //      res.send(result);
-  //    });
-  //  }).catch((err)=>{
-  //    console.log(err);
-  //    throw new Error(err);
-  //  });
-  //} catch (error) {
-  //  console.log(error);
-  //  res.send(result_object);
-  //}
-};
 
-//exports.getLicences184 = (req, res, next) => {
-//  const connectionString = `Server=${keys.mssql_server184};Port=${keys.mssql_port184};Username=${keys.mssql_username184};Password=${keys.mssql_password184};Database=${keys.mssql_database};Trusted_Connection=Yes;Driver={ODBC Driver 17 for SQL Server}`;
-//
-//  sql.query(connectionString, licencesQuery, (err, rows) => {
-//    if(err) console.log(err.message);
-//    console.log(rows);
-//    res.send(rows);
-//  });
-//}
+  sendQuery();
+};
