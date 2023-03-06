@@ -25,7 +25,7 @@ const configCommon = {
 }
 
 exports.getLicences183 = (req, res, next) => {
-  let result_object = {};
+  let result_object_183 = {};
   const config = {
     password: keys.mssql_password183,
     server: keys.mssql_server183,
@@ -40,12 +40,12 @@ exports.getLicences183 = (req, res, next) => {
         if(err){
           throw new Error(err.message);
         }
-        result_object = result.recordset;
+        result_object_183 = result.recordset;
         res.send(result.recordset);
       })
      } catch (err) {
       console.log(err);
-      res.send(result_object);
+      res.send(result_object_183);
      }
   }
 
@@ -54,7 +54,7 @@ exports.getLicences183 = (req, res, next) => {
 
 exports.getLicences184 = (req, res, next) => {
 
-  let result_object = {};
+  let result_object_184 = {};
   const config = {
     password: keys.mssql_password184,
     server: keys.mssql_server184,
@@ -69,12 +69,12 @@ exports.getLicences184 = (req, res, next) => {
         if(err){
           throw new Error(err.message);
         }
-        result_object = result.recordset;
+        result_object_184 = result.recordset;
         res.send(result.recordset);
       })
      } catch (err) {
       console.log(err);
-      res.send(result_object);
+      res.send(result_object_184);
      }
   }
 
