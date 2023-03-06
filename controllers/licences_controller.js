@@ -33,6 +33,8 @@ exports.getLicences183 = (req, res, next) => {
         result_object = result;
         res.send(result);
       });
+    }).catch((err)=>{
+      throw new Error(err);
     });
   } catch (error) {
     console.log(error);
@@ -62,7 +64,9 @@ exports.getLicences184 = (req, res, next) => {
         result_object = result;
         res.send(result);
       });
-    });
+    }).catch((err)=>{
+      throw new Error(err);
+    });;
   } catch (error) {
     console.log(error);
     res.send(result_object);
