@@ -13,7 +13,7 @@ const licencesQuery = `
 
 exports.getLicences183 = (req, res, next) => {
   // config for your database
-  let result_object;
+  let result_object = {};
   const config = {
     user: keys.mssql_username183,
     password: keys.mssql_password183,
@@ -42,7 +42,7 @@ exports.getLicences183 = (req, res, next) => {
 
 exports.getLicences184 = (req, res, next) => {
   // config for your database
-  let result_object;
+  let result_object = {};
   const config = {
     user: keys.mssql_username184,
     password: keys.mssql_password184,
