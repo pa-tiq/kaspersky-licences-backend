@@ -13,11 +13,6 @@ const licencesQuery = ` SELECT
 const configCommon = {
   database: keys.mssql_database,
   user: keys.mssql_username,
-  pool: {
-    max: 10,
-    min: 0,
-    idleTimeoutMillis: 30000,
-  },
   options: {
     trustedConnection: true,
     trustServerCertificate: true,
