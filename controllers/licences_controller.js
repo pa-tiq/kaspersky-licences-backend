@@ -53,6 +53,11 @@ exports.getLicences184 = (req, res, next) => {
     //driver: '{ODBC Driver 17 for SQL Server}',
     port: keys.mssql_port184,
     database: keys.mssql_database,
+    pool: {
+      max: 10,
+      min: 0,
+      idleTimeoutMillis: 30000
+    },
     options: {
       trustedConnection: true,
       trustServerCertificate: true
@@ -61,7 +66,6 @@ exports.getLicences184 = (req, res, next) => {
 
   async () => {
     try {
-      // make sure that any items are correctly URL encoded in the connection string
       await sql.connect(config);
       const result = await sql.query`${licencesQuery}`;
       console.dir(result);
