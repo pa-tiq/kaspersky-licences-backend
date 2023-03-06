@@ -40,8 +40,10 @@ exports.getLicences183 = (req, res, next) => {
         if(err){
           throw new Error(err.message);
         }
-        result_object_183 = result.recordset;
-        res.send(result.recordset);
+        else{
+          result_object_183 = result.recordset;
+          res.send(result.recordset);
+        }
       })
      } catch (err) {
       console.log(err);
@@ -69,8 +71,10 @@ exports.getLicences184 = (req, res, next) => {
         if(err){
           throw new Error(err.message);
         }
-        result_object_184 = result.recordset;
-        res.send(result.recordset);
+        else{
+          result_object_184 = result.recordset;
+          res.send(result.recordset);
+        }
       })
      } catch (err) {
       console.log(err);
