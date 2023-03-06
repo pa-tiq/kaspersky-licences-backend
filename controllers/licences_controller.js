@@ -34,6 +34,7 @@ exports.getLicences183 = (req, res, next) => {
         res.send(result);
       });
     }).catch((err)=>{
+      console.log(err);
       throw new Error(err);
     });
   } catch (error) {
@@ -65,6 +66,7 @@ exports.getLicences184 = (req, res, next) => {
         res.send(result);
       });
     }).catch((err)=>{
+      console.log(err);
       throw new Error(err);
     });;
   } catch (error) {
