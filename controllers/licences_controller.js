@@ -30,7 +30,7 @@ const tryGetLicenceCount = (res,config, server) => {
     .then((err, result) => {
       if (err) {
         if (err.recordset) {
-          console.log(`Licenças do ${server} obtidas!`);
+          console.log(`Licenças do ${server} obtidas, mas com erro: ${err.message}`);
           let data = JSON.stringify(err.recordset);
           fs.writeFileSync(`${server}.json`, data);
           res.send(err.recordset);
