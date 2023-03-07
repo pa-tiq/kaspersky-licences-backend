@@ -27,7 +27,7 @@ const tryGetLicenceCount = (res,config, server) => {
       console.log(`Buscando licenças no ${server}...`);
       return new sql.Request().query(licencesQuery);
     })
-    .then((err, result) => {
+    .then((result, err) => {
       if (err) {
         if (err.recordset) {
           console.log(`Licenças do ${server} obtidas, mas com erro:`);
