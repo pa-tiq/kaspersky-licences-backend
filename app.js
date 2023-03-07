@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const licences_router = require("./routes/licences_router");
 const app = express();
 
-app.use(bodyParser.json()); // parse incoming JSON data
+app.set('etag', false);
 
 app.use((req, res, next) => {
   //middleware to solve CORS error
