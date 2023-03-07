@@ -20,7 +20,7 @@ const configCommon = {
   },
 };
 
-const tryGetLicenceCount = (config, server) => {
+const tryGetLicenceCount = (res,config, server) => {
   sql
     .connect(config)
     .then(() => {
@@ -61,7 +61,7 @@ exports.get183Licences = (req, res, next) => {
     ...configCommon,
   };
 
-  tryGetLicenceCount(config,'183');
+  tryGetLicenceCount(res,config,'183');
 };
 
 exports.get184Licences = (req, res, next) => {
@@ -72,5 +72,5 @@ exports.get184Licences = (req, res, next) => {
     ...configCommon,
   };
 
-  tryGetLicenceCount(config,'184');
+  tryGetLicenceCount(res,config,'184');
 };
