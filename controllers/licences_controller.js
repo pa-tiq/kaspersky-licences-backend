@@ -59,7 +59,7 @@ const tryGetLicenceCount = async (res, config, server) => {
         conn.close();
       })
       .catch((error) => {
-        throw new Error(err.message);
+        throw new Error(error.message);
       });
   } catch (error) {
     let rawdata = fs.readFileSync(`${server}.json`);
