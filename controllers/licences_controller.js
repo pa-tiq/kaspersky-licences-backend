@@ -48,11 +48,10 @@ const tryGetLicenceCount = async (res, config, server) => {
         } else {
           console.log(`Licenças do ${server} obtidas!`);
           let data = JSON.stringify(result.recordset);
-          data = data.filter((item)=>
-            item['OM'] !== "pqrmnt12.intranet"
-          );
           fs.writeFileSync(`${server}.json`, data);
-          res.send(result.recordset);
+          res.send(
+            result.recordset.filter((item) => item.OM !== 'pqrmnt12.intranet')
+          );
         }
       })
       .finally(() => {
